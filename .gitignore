@@ -3,6 +3,8 @@
 /public/build
 /public/hot
 /public/storage
+/public/fonts
+/public/Style/fontawesome
 /storage/*.key
 /vendor
 .env

@@ -1,0 +1,53 @@
+:root {
+    --cover: rgba(0, 0, 0, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+a:hover {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+    border-bottom: none
+}
+@font-face {
+    font-family: 'Gandom';
+    src: url("../fonts/Gandom-FD.eot");
+    src: url("../fonts/Gandom-FD.woff") format('woff');
+}
+
+body {
+    font-family: "Gandom", Arial !important;
+    font-weight: normal;
+    direction: rtl !important;
+    font-size: 14px;
+}
+
+label {
+    font-weight: bold;
+}
+
+#head {
+    width: 100vw;
+    height: 100vh;
+    background: url("../images/list-desk_23-2148938724.jpg") no-repeat fixed center center/cover;
+}
+
+#head .cover {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    top: 0;
+    right: 0;
+    background-color: var(--cover);
+}

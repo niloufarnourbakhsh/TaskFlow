@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
+
+Route::resource('plans',PlanController::class)->middleware('auth');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
