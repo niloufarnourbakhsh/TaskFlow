@@ -23,7 +23,10 @@ class PlanRequest extends FormRequest
     {
         return [
             'description'=>'required',
-            'summation'=>'required'
+            'summation'=>'sometimes|required',
+            'category_id'=>'required',
         ];
     }
+
+
 }
