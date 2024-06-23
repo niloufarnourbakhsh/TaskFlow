@@ -32,7 +32,7 @@ class PlanController extends Controller
     public function store(PlanRequest $request)
     {
         Auth::user()->plans()->create($request->all());
-        return redirect()->to('/');
+        return redirect()->back();
     }
 
     /**
