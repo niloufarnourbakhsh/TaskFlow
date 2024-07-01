@@ -1,4 +1,6 @@
 import './bootstrap';
+import * as bootstrap from 'bootstrap';
+import '../css/app.css';
 
 import Alpine from 'alpinejs';
 
