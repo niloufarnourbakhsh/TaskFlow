@@ -6,9 +6,9 @@
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
-                <form class="form-controller mx-auto p-2" method="post" action="{{route('plans.store')}}">
+                <form class="form-controller mx-auto p-2" method="post" action="{{route('plans.update')}}">
                     @csrf
-                    @include('Plan.form',['buttonName'=>'ذخیره'])
+                    @include('Plan.form',['buttonName'=>'ویرایش'])
                 </form>
             </div>
             <div class="col-3"></div>

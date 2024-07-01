@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Task Flow') }}</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="{{asset('Style/style.css')}}">
     <link rel="stylesheet" href="{{asset('Style/fontawesome/css/all.min.css')}}">
+    <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss','resources/js/app.js']);
 </head>
-<body>
-@yield('body')
+<body class="font-sans antialiased">
+    @yield('base')
 </body>
-
 </html>
