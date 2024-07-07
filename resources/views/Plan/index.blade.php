@@ -2,38 +2,32 @@
 @section('body')
     @include('layouts.header')
     <div class="horizontal-line"></div>
-    <div class="container my-5 p-2 ">
-        <div class="row row-cols-2  g-2 box-height ">
-            <div class="col my-2 bg-brown">
-                <a href="{{route('plans.create')}}" >
-                    <div class=" bg-brown text-center">
-                        <p class="pt-5">اضافه کردن پلن جدید</p>
+    <div class="container">
+        <div class="row row-cols-3 p-2 mt-5">
+            @forelse($plans as $plan)
+                <div class="col my-3 ">
+                <div class="card bg-green-two">
+                    <a href="{{route('plans.show',$plan->id)}}">
+                        <div class="body p-3">
+                            {{\Illuminate\Support\Str::limit($plan->description,120)}}
+                        </div>
+                    </a>
+                    <div class="d-flex flex-row justify-content-between">
+                        <form action="{{route('plans.destroy',$plan->id)}}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" name="delete">
+                                <i class="fa-solid fa-square-minus px-3 t-red"></i>
+                            </button>
+                        </form>
+                        <p class="px-2 py-1 m-1">{{$plan->created_at}}</p>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col my-2 bg-golbey box-height">
-                <a href="">
-                    <div class=" bg-golbey text-center">
-                        <p class="pt-5"> مشاهده ی پلن های هفته ی اخیر</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col my-2 bg-light-yellow box-height">
-                <a href="">
-                    <div class=" bg-light-yellow text-center">
-                        <p class="card-text pt-5"> مشاهده پلن سالانه و ماهانه</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col my-2 bg-cream box-height">
-                <a href="">
-                    <div class=" bg-cream text-center">
-                        <p class="card-text py-5">This is a longer card with supporting text  bit longer.</p>
-                    </div>
-                </a>
-            </div>
-            </div>
+            @empty
+                No Content Yet
+            @endforelse
         </div>
-
+    </div>
 
 @endsection
