@@ -14,9 +14,9 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss','resources/js/app.js']);
+    @vite(['resources/sass/app.scss','resources/js/app.js'])
 </head>
-<body class="font-sans antialiased">
-    @yield('base')
+<body class="font-sans antialiased ">
+    @yield('body')
 </body>
 </html>
