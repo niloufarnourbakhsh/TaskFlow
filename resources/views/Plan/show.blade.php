@@ -9,6 +9,7 @@
                     <p>{{$plan->description}}</p>
                     <p>{{$plan->summation}}</p>
                     <p>{{$plan->created_at}}</p>
+                    <p><a href="{{route('plans.edit',$plan->id)}}" class="btn btn-link">ویرایش</a></p>
                 </div>
             </div>
             <div class="col-1"></div>
@@ -22,16 +23,28 @@
                 </div>
                 <div class="d-flex flex-row">
                     @foreach($plan->tasks as $task)
-                        <div class="bg-green-two p-2 px-4 my-2 d-flex flex-column m-auto rounded-1">
-                            <p >{{$task->body}}</p>
-                            <div >
-                            @foreach($statuses as $status)
-
-                                    <input type="radio" name="status" value="{{$status->value}}"
-                                           class=" bg-yellow rounded-1">
-                                    <label class="my-3 ml-4">{{$status->value}}</label>
-
-                            @endforeach
+                        <div class="bg-green-two p-2 px-4 my-3 d-flex flex-column m-auto rounded-1">
+                            <p>{{$task->body}}</p>
+                            <div class="d-flex">
+                                @foreach($statuses as $status)
+                                    <form action="{{route('tasks.update',$task->id)}}" method="post">
+                                        @csrf
+                                        @method('patch')
+                                        <input type="radio" name="status" value="{{$status->value}}"
+                                               class="bg-green-three rounded-1"
+                                               onchange="this.form.submit()"
+                                               @if($task->status->value == $status->value) checked @endif >
+                                        <label class="my-3 ml-4" @if($task->status->value== $status->value)
+                                            class="bg-green-four p-2" @endif>{{$status->value}}</label>
+                                    </form>
+                                @endforeach
+                            </div>
+                            <div>
+                                <form action="{{route('tasks.delete',$task->id)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button><i class="fa-solid fa-square-minus t-red"></i></button>
+                                </form>
                             </div>
                         </div>
                     @endforeach

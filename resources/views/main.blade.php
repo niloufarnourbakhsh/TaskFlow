@@ -1,10 +1,7 @@
-@extends('Include.header')
+@extends('layouts.basic')
 @section('body')
     <header id="head">
         <div class="cover">
-            <ul>
-                <li><a href=""></a></li>
-            </ul>
         </div>
     </header>
 @endsection
