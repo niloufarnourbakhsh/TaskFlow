@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Plan;
+use App\TaskStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +19,9 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
+            'plan_id'=>Plan::factory()->create(),
             'body'=>$this->faker->paragraph(2),
-            'status'=>'not completed'
+            'status'=>TaskStatus::NotDone->value,
         ];
     }
 }

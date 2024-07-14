@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Plan::class);
             $table->string('body');
-            $table->string('status');
+            $table->enum('status',['notdone','doing','completed'])->default('notdone');
             $table->timestamps();
         });
     }
