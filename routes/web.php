@@ -1,14 +1,19 @@
 <?php
 
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\PlanTaskController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('main');
 });
-
-Route::resource('plans',PlanController::class)->middleware('auth');
+Route::group(['middleware'=>'auth'],function (){
+    Route::resource('plans',PlanController::class);
+    Route::post('/tasks/{plan}',[PlanTaskController::class,'store'])->name('tasks.store');
+    Route::patch('/tasks/{task}',[PlanTaskController::class,'update'])->name('tasks.update');
+    Route::delete('/tasks/{task}',[PlanTaskController::class,'delete'])->name('tasks.delete');
+});
 
 
 Route::get('/dashboard', function () {

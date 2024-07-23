@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer(['Plan.create'],function ($view){
+        View::composer(['Plan.create','Plan.edit'],function ($view){
             $view->with('Categories',Category::all());
         });
         Gate::policy(Plan::class,PlanPolicy::class);
