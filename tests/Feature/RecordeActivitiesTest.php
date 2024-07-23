@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Activity;
 use App\Models\Plan;
+use App\Models\Task;
 use App\Models\User;
 use App\TaskStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -31,4 +32,14 @@ class RecordeActivitiesTest extends TestCase
         ]);
         $this->assertCount(2,Activity::all());
     }
+
+    public function test_changing_the_task_status_adds_activity()
+    {
+        $task=Task::factory()->create();
+        $this->actingAs($task->plan->user)->patch('/tasks/'.$task->id,[
+            'status'=>TaskStatus::Doing->value
+        ]);
+        $this->assertCount(3,Activity::all());
+    }
+
 }

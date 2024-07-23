@@ -15,9 +15,8 @@ class ManagePlansTest extends TestCase
 
     public function test_a_user_can_create_a_plan(): void
     {
-        $user = User::factory()->create();
         $category=Category::factory()->create();
-        $this->actingAs($user)->post('/plans', $attributes = [
+        $this->actingAs(User::factory()->create())->post('/plans', $attributes = [
             'category_id'=>$category->id,
             'description' => 'something',
             'summation' => 'finished'
@@ -45,14 +44,14 @@ class ManagePlansTest extends TestCase
         ])->assertSessionHasErrors('description');
     }
 
-    public function test_a_plan_must_have_summation()
+    public function test_a_plan_can_be_nullable()
     {
         $user = User::factory()->create();
         $this->actingAs($user)->post('/plans', [
             'category_id'=>Category::factory()->create(),
             'description' => 'something',
             'summation' =>''
-        ])->assertSessionHasErrors('summation');
+        ])->assertSessionHasNoErrors('summation');
     }
 
     public function test_a_plan_must_belongs_to_a_category()
